@@ -18,9 +18,15 @@ const __dirname = path.resolve();
 
 app.use(express.json());
 app.use(cookieParser());
+
+const allowedOrigins = [
+  "http://localhost:5173",                     // local dev
+  "https://chat-app-cbuq.onrender.com", // deployed frontend
+];
+
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: allowedOrigins,
     credentials: true,
   })
 );
